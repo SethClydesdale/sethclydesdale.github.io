@@ -1,0 +1,209 @@
+/* INITIAL STYLES */
+body {
+  color:#333;
+  background:#FFF;
+  font-size:13px;
+  font-family:Arial, sans-serif;
+  padding:0;
+  margin:0;
+  overflow-x:hidden;
+  display:flex;
+  min-height:100vh;
+  flex-direction:column;
+}
+
+p {
+  font-size:15px;
+  margin:20px 0;
+}
+
+ul { padding-left:0px; }
+
+.center { text-align:center; }
+.clear:after, .column-row:after {
+  content:"";
+  display:table;
+  clear:both;
+}
+
+
+/* LINKS AND BUTTONS */
+a {
+  color:#039;
+  text-decoration:none;
+}
+a:hover { text-decoration:underline; }
+
+.button, a.button {
+  color:#FFF;
+  background:#39C;
+  font-size:13px;
+  font-family:Meiryo, Osaka, Arial, sans-serif;
+  text-decoration:none;
+  border:none;
+  font-weight:bold;
+  display:inline-block;
+  padding:6px 12px;
+  margin:3px;
+  cursor:pointer;
+  outline:none;
+}
+
+.button:hover, a.button:hover { background:#28B; }
+
+
+/* HEADER */
+header {
+  color:#FFF;
+  background:url('images/main-alpha.png') no-repeat 15px 50% #39C;
+  padding:30px 30px 30px 150px;
+  position:relative;
+  overflow:hidden;
+}
+
+#home-link:before { /* makes the above background image clickable */
+  content:"";
+  position:absolute;
+  height:120px;
+  width:120px;
+  left:15px;
+  top:50%;
+  margin-top:-60px;
+}
+
+header h1 { font-size:32px; }
+header h1 a { color:#FFF; }
+
+h2 { margin:30px 0 0 0; }
+
+a#fork-me {
+  color:#FFF;
+  background:#333;
+  font-size:16px;
+  font-weight:bold;
+  text-align:center;
+  text-transform:uppercase;
+  text-decoration:none;
+  line-height:30px;
+  height:30px;
+  width:200px;
+  transform:rotate(45deg);
+  position:absolute;
+  right:-55px;
+  top:30px;
+  transition-property:color, background;
+  transition-duration:300ms;
+}
+
+a#fork-me:hover {
+  color:#333;
+  background:#FFF;
+}
+
+
+/* CONTENT */
+#content { flex:1 0 auto; }
+
+.content-block {
+  max-width:1000px;
+  margin:0 auto;
+  padding:30px;
+}
+
+.title {
+  color:#333;
+  font-size:28px;
+  margin:20px 0;
+}
+
+.title-desc {
+  font-size:16px;
+}
+
+.title-med {
+  font-size:18px;
+  margin:10px 0;
+}
+
+.section-title {
+  color:#39C;
+  font-size:24px;
+  border-bottom:2px solid #39C;
+  margin:0;
+  padding-bottom:6px;
+}
+
+.sub-title {
+  font-size:18px;
+  margin:16px 0;
+}
+
+/* MAIN INFO */
+#main-logo {
+  height:150px;
+  width:150px;
+}
+
+.column {
+  float:left;
+  width:32.5%;
+  margin-right:1%
+}
+
+.column:last-child {
+  margin-right:0;
+  width:33%
+}
+
+.column li {
+  list-style-type:none;
+  position:relative;
+  margin-bottom:6px;
+  padding-left:13px;
+}
+
+.column li:before {
+  content:"• ";
+  font-size:16px;
+  position:absolute;
+  left:3px;
+}
+
+
+/* FOOTER */
+footer {
+  color:#FFF;
+  background:#333;
+  padding:15px;
+}
+
+footer a { color:#CCC; }
+footer a:hover { color:#FFF; }
+
+footer ul {
+  list-style-type:none;
+  margin:0;
+  padding:0;
+}
+
+footer li { float:left; }
+footer li:before {
+  content:"•";
+  display:inline-block;
+  margin:0 5px;
+  vertical-align:middle;
+}
+footer li:first-child:before { display:none; }
+
+.footer-left { float:left; }
+.footer-right { float:right; }
+
+
+/* RESPONSIVENESS */
+@media (max-width:820px) {
+  .column, .column:last-child {
+    width:100%;
+    margin:0 0 30px 0;
+    float:none;
+  }
+}

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://sethclydesdale.github.io/</loc>
+  </url>
+
+  <url>
+    <loc>https://sethclydesdale.github.io/privacy/</loc>
+  </url>
+  
+  <!-- REPOS -->
+  <url>
+    <loc>https://sethclydesdale.github.io/genki-study-resources/</loc>
+  </url>
+  
+  <url>
+    <loc>https://sethclydesdale.github.io/ps4-cover-generator/</loc>
+  </url>
+  
+  <url>
+    <loc>https://sethclydesdale.github.io/wiki-source-editor/</loc>
+  </url>
+  
+  <url>
+    <loc>https://sethclydesdale.github.io/forumactif-edge/</loc>
+  </url>
+  
+  <url>
+    <loc>https://sethclydesdale.github.io/browser-pong/</loc>
+  </url>
+  
+  <url>
+    <loc>http://sethclydesdale.github.io/magic-8-ball/</loc>
+  </url>
+  
+  <url>
+    <loc>http://sethclydesdale.github.io/rock-paper-scissors/</loc>
+  </url>
+  
+  <url>
+    <loc>http://sethclydesdale.github.io/dom-blast/</loc>
+  </url>
+  
+  <url>
+    <loc>https://sethclydesdale.github.io/scroll-spider/</loc>
+  </url>
+  
+  <url>
+    <loc>https://sethclydesdale.github.io/rainstorm/</loc>
+  </url>
+</urlset>
