@@ -56,7 +56,7 @@ a:hover { text-decoration:underline; }
 header {
   color:#FFF;
   background:url('images/main-alpha.png') no-repeat 15px 50% #39C;
-  padding:30px 30px 30px 150px;
+  padding:20px 20px 20px 130px;
   position:relative;
   overflow:hidden;
 }
@@ -64,11 +64,11 @@ header {
 #home-link:before { /* makes the above background image clickable */
   content:"";
   position:absolute;
-  height:120px;
-  width:120px;
-  left:15px;
+  height:100px;
+  width:100px;
+  left:14px;
   top:50%;
-  margin-top:-60px;
+  margin-top:-50px;
 }
 
 header h1 { font-size:32px; }
@@ -202,7 +202,7 @@ footer li:first-child:before { display:none; }
 /* RESPONSIVENESS */
 @media (max-width:820px) {
   header {
-    padding:120px 0px 0px 0px;
+    padding:100px 0px 0px 0px;
     text-align:center;
     background-position:50% 10px;
   }
@@ -212,11 +212,11 @@ footer li:first-child:before { display:none; }
   #home-link:before {
     content:"";
     position:absolute;
-    height:120px;
-    width:120px;
-    top:70px;
+    height:100px;
+    width:100px;
+    top:60px;
     left:50%;
-    margin-left:-60px;
+    margin-left:-50px;
   }
   
   .column, .column:last-child {
