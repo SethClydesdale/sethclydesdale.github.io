@@ -6,7 +6,6 @@ body {
   font-family:Arial, sans-serif;
   padding:0;
   margin:0;
-  overflow-x:hidden;
   display:flex;
   min-height:100vh;
   flex-direction:column;
