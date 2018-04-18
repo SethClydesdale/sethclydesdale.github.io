@@ -109,6 +109,31 @@ a#fork-me:hover {
   padding:30px;
 }
 
+/* section anchors */
+a.anchor {
+  color:#666;
+  font-family:FontAwesome;
+  font-size:16px;
+  font-weight:normal;
+  text-decoration:none;
+  text-align:center;
+  vertical-align:middle;
+  display:inline-block;
+  width:25px;
+  margin:0 0 0 -25px;
+}
+
+.anchor-icon {
+  display:inline-block;
+  transform:rotate(-45deg);
+  visibility:hidden;
+}
+
+h1:hover .anchor-icon, h2:hover .anchor-icon, h3:hover .anchor-icon, h4:hover .anchor-icon, h5:hover .anchor-icon, h6:hover .anchor-icon {
+  visibility:visible;
+}
+
+/* titles */
 .title {
   color:#333;
   font-size:28px;
@@ -199,7 +224,22 @@ footer li:first-child:before { display:none; }
 
 
 /* RESPONSIVENESS */
+@media (max-width:1000px) {
+  /* wrapper's max-width is 1000px, so remove padding so the page takes up the whole screen */
+  .content-block { padding:30px 0; }
+  
+  /* add a bit of padding to other elements */
+  p, ul, h2, h3, h4, h5, h6 {
+    padding:0 6px;
+  }
+  
+  /* adjust anchor position */
+  a.anchor { margin:0 0 0 -5px; }
+  .center a.anchor { margin:0 0 0 -25px; }
+}
+
 @media (max-width:820px) {
+  /* header adjustments */
   header {
     padding:100px 0px 0px 0px;
     text-align:center;
@@ -218,6 +258,7 @@ footer li:first-child:before { display:none; }
     margin-left:-50px;
   }
   
+  /* display columns on a single line */
   .column, .column:last-child {
     width:100%;
     margin:0 0 30px 0;
