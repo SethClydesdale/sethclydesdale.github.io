@@ -1,4 +1,25 @@
 /* INITIAL STYLES */
+@font-face {
+  font-family:'FontAwesomeWeb';
+  src:url('fonts/fontawesome-webfont.eot?v=4.7.0');
+  src:url('fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), 
+      url('fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), 
+      url('fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), 
+      url('fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), 
+      url('fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+  font-weight:normal;
+  font-style:normal;
+}
+
+.fa {
+  display:inline-block;
+  font:normal normal normal 14px/1 FontAwesomeWeb, FontAwesome;
+  font-size:inherit;
+  text-rendering:auto;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
 body {
   color:#333;
   background:#FFF;
@@ -112,7 +133,7 @@ a#fork-me:hover {
 /* section anchors */
 a.anchor {
   color:#666;
-  font-family:FontAwesome;
+  font-family:FontAwesomeWeb, FontAwesome;
   font-size:16px;
   font-weight:normal;
   text-decoration:none;
