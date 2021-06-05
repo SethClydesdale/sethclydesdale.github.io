@@ -1,0 +1,127 @@
+/* tasty animations */
+@keyframes pancake-slide {
+  from { background-position:0px 0px }
+    to { background-position:200px 200px }
+}
+
+@keyframes altina-leaving {
+  from { left:0 }
+    to { left:-100%; }
+}
+
+@keyframes altina-going-to-bed {
+  from { left:-100% }
+    to { left:0; }
+}
+
+
+/* s-so many pancakes... */
+body {
+  background:url(images/pancake-bg.png) repeat fixed #FFF;
+}
+
+body.pancake-slide {
+  animation:pancake-slide 5s linear infinite;
+}
+
+/* so many Altinas, too... */
+.main-title-image {
+  height:100px;
+  vertical-align:middle;
+  margin:0 3px;
+}
+
+/* Altina is showing off her pancakes..! What's that? You want some? ...she MIGHT share. */
+#intro-tina {
+  height:150px;
+}
+
+/* Let's take a moment to thank Altina for pointing out the titles m(__)m */
+h2.section-title {
+  background:url(images/altina-title.png) no-repeat 0 0;
+  background-size:50px;
+  padding-left:55px;
+}
+
+/* Altina kindly points you to the download button, as well! */
+#download-zone {
+  height:125px;
+  margin-top:50px;
+  display:inline-block;
+  position:relative;
+}
+
+#download-zone:after {
+  content:url(images/altina-download.png);
+  position:absolute;
+  top:-55px;
+  left:110px;
+  z-index:-1;
+}
+
+/* she thanks you for downloading her sticker set */
+#download-zone.downloaded:after {
+  content:url(images/altina-thanking.png);
+    left:120px;
+}
+
+
+/* feed Altina some pancakes so she can make it home! */
+#easter-egg { position:relative; }
+#pancakes {
+  position:absolute;
+  bottom:0;
+}
+
+#altina.leaving-for-home {
+  position:relative;
+  animation:altina-leaving 4s ease-in;
+}
+
+#altina.going-to-bed {
+  position:relative;
+  animation:altina-going-to-bed 4s ease-out;
+}
+
+/* gotta preload our 'tinas */
+#preload {
+  width:1px;
+  height:1px;
+  visibility:hidden;
+  overflow:hidden;
+}
+
+/* deliciously sweet list item bullets */
+ul.pancake-bullets { padding-left:15px }
+ul.pancake-bullets li {
+  background:url(images/pancakes-sm.png) no-repeat 0 50%;
+  min-height:25px;
+  line-height:25px;
+  padding-left:30px;
+  margin-bottom:6px;
+  list-style-type:none;
+}
+
+/* sometimes too much syrup just makes the pancakes slide */
+footer { position:relative }
+#pancake-slider {
+  position:absolute;
+  top:-23px;
+  left:5px;
+  cursor:pointer;
+}
+
+/* mee-hee-huh!? what are you doing here!? (=´・ω・`=)みししっ */
+#mishy {
+  position:fixed;
+  right:-200px;
+  bottom:0;
+  opacity:0.3;
+  z-index:1;
+  transition:500ms;
+}
+
+#mishy:hover {
+  right:0;
+  opacity:1;
+}
