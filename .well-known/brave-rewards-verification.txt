@@ -1,4 +1,0 @@
-This is a Brave Rewards publisher verification file.
-
-Domain: sethclydesdale.github.io
-Token: eede152141ac34417ae401f224a5c1efcc428f75ff2652f88238655ffd1b0829
