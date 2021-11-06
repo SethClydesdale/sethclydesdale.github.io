@@ -215,6 +215,12 @@ h1:hover .anchor-icon, h2:hover .anchor-icon, h3:hover .anchor-icon, h4:hover .a
   left:3px;
 }
 
+.columns-2 > div {
+  width:50%;
+  margin:0 0 25px 0;
+  float:left;
+}
+
 
 /* FOOTER */
 footer {
@@ -285,5 +291,10 @@ footer li:first-child:before { display:none; }
     width:100%;
     margin:0 0 30px 0;
     float:none;
+  }
+  
+  .columns-2 > div {
+    float:none;
+    width:100%;
   }
 }

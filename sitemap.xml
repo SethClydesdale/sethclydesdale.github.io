@@ -9,9 +9,15 @@
     <loc>https://sethclydesdale.github.io/privacy/</loc>
   </url>
 
-  <!-- internal projects -->
+  <!-- falcom stickers -->
   <url>
-    <loc>https://sethclydesdale.github.io/projects/laid-back-altina/</loc>
+    <loc>https://sethclydesdale.github.io/projects/falcom-stickers/</loc>
+  </url>
+  <url>
+    <loc>https://sethclydesdale.github.io/projects/falcom-stickers/laid-back-altina/</loc>
+  </url>
+  <url>
+    <loc>https://sethclydesdale.github.io/projects/falcom-stickers/laid-back-altina-2/</loc>
   </url>
   
   <!-- REPOS -->
