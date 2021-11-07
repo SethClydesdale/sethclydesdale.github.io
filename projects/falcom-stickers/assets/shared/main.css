@@ -1,3 +1,9 @@
+.main-title-image {
+  height:100px;
+  vertical-align:middle;
+  margin:0 3px;
+}
+
 .content-block.back-button {
   padding-top:10px;
   padding-bottom:0;
