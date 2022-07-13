@@ -101,6 +101,7 @@
 
 .reading-sources a:before {
   font-family:FontAwesomeWeb, FontAwesome;
+  font-weight:normal;
   margin-right:4px;
 }
 
