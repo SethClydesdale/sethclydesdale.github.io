@@ -24,7 +24,7 @@
   box-shadow:0px 0px 4px rgb(0 0 0 / 30%);
 }
 
-.char-profile, #staff, #genre {
+.char-profile, .staff, #genre {
   padding:10px 0;
   border-bottom:1px dashed #CCC;
 }
@@ -140,7 +140,7 @@
 
 /* responsiveness */
 @media (max-width:1100px) {
-  #staff { text-align:left; }
+  .staff { text-align:left; }
   #image-column, #summary-column, .columns-2 > div.char-img-col, .columns-2 > div.char-info-col {
     text-align:center;
     display:block;
