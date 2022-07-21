@@ -35,8 +35,11 @@
         '<div id="aniesu_viewer_page" tabindex="0" onclick="Aniesu.hideHeader();"></div>'+
         '<div id="aniesu_viewer_head">'+
           '<div id="aniesu_viewer_close" onclick="Aniesu.close();" title="Close manga viewer"></div>'+
-          '<div id="aniesu_viewer_title"></div>'+
-          "<a id=\"aniesu_viewer_twitter\" href=\"https://twitter.com/intent/tweet?hashtags=%E3%82%A2%E3%83%8B%E3%82%A8%E3%82%B9%E3%81%AE%E6%B5%81%E5%84%80&text=Kuro%20no%20Kiseki%3A%20Agnes'%20Style&url=https%3A%2F%2Fsethclydesdale.github.io%2Fprojects%2Fagnes-style%2F%3Fchapter%3D1\" target=\"_blank\" title=\"Share current chapter to Twitter\"></a>"+
+          '<div id="aniesu_viewer_title">'+
+            '<div id="aniesu_viewer_manga_title">Kuro no Kiseki: Agnes\' Style</div>'+
+            '<div id="aniesu_viewer_chapter_title">Chapter 1</div>'+
+          '</div>'+
+          "<a id=\"aniesu_viewer_twitter\" href=\"https://twitter.com/intent/tweet?hashtags=%E3%82%A2%E3%83%8B%E3%82%A8%E3%82%B9%E3%81%AE%E6%B5%81%E5%84%80&text=Kuro%20no%20Kiseki%3A%20Agnes'%20Style%20-%20Chapter%201&url=https%3A%2F%2Fsethclydesdale.github.io%2Fprojects%2Fagnes-style%2F%3Fchapter%3D1\" target=\"_blank\" title=\"Share current chapter to Twitter\"></a>"+
         '</div>';
       
       document.body.appendChild(viewer);
@@ -44,7 +47,7 @@
       // cache elements for later manipulation
       Aniesu.viewer = {
         body : viewer,
-        title : document.getElementById('aniesu_viewer_title'),
+        ch_title : document.getElementById('aniesu_viewer_chapter_title'),
         page : document.getElementById('aniesu_viewer_page'),
         prev : document.getElementById('aniesu_viewer_prev'),
         next : document.getElementById('aniesu_viewer_next'),
@@ -63,7 +66,13 @@
         pg : pg
       };
       
-      Aniesu.preloadPages();
+      // preload pages for the selected chapter
+      Aniesu.preloadPages(ch);
+      
+      // also preload pages in the previous chapter
+      if (ch > 1) {
+        Aniesu.preloadPages(ch - 1);
+      }
       
       // create viewer if it doesn't exist, otherwise show it
       if (!Aniesu.viewer) {
@@ -76,13 +85,10 @@
       document.body.style.overflow = 'hidden';
       
       // update share link with selected chapter
-      Aniesu.viewer.twitter.href = Aniesu.viewer.twitter.href.replace(/chapter%3D\d+/, 'chapter%3D' + Aniesu.current.ch);
+      Aniesu.updateShareLink();
       
       // set current chapter title and page
-      Aniesu.viewer.title.innerHTML = 
-        '<div id="aniesu_viewer_manga_title">Agnes\' Style</div>'+
-        '<div id="aniesu_viewer_chapter_title">Chapter ' + ch + '</div>';
-      
+      Aniesu.viewer.ch_title.innerHTML = 'Chapter ' + Aniesu.current.ch;
       Aniesu.viewer.page.style.backgroundImage = 'url(chapters/read/chapter-' + ch + '/' + pg + '.jpg)';
       
       // focus page to show the header for a few seconds
@@ -105,12 +111,9 @@
       if (Aniesu.chapter[Aniesu.current.ch] && ++Aniesu.current.pg > Aniesu.chapter[Aniesu.current.ch]) {
         // go to the next chapter if it exists
         if (Aniesu.chapter[++Aniesu.current.ch]) {
-          Aniesu.preloadPages();
           Aniesu.current.pg = 1;
-          Aniesu.viewer.twitter.href = Aniesu.viewer.twitter.href.replace(/chapter%3D\d+/, 'chapter%3D' + Aniesu.current.ch);
-          Aniesu.viewer.title.innerHTML = 
-            '<div id="aniesu_viewer_manga_title">Agnes\' Style</div>'+
-            '<div id="aniesu_viewer_chapter_title">Chapter ' + Aniesu.current.ch + '</div>';
+          Aniesu.updateShareLink();
+          Aniesu.viewer.ch_title.innerHTML = 'Chapter ' + Aniesu.current.ch;
           
         } else { // otherwise let the reader know they've reached the end, then close the viewer
           Aniesu.current.ch--;
@@ -118,6 +121,11 @@
           
           alert("You've reached the end for now! Check back later for when new chapters are added. You can close the manga viewer by clicking the middle of the screen and then the X on the top left.");
         }
+      }
+      
+      // preload next chapter
+      if (Aniesu.current.pg == Aniesu.chapter[Aniesu.current.ch]) {
+        Aniesu.preloadPages(Aniesu.current.ch + 1);
       }
       
       // update page
@@ -135,10 +143,8 @@
         if (Aniesu.chapter[--Aniesu.current.ch]) {
           Aniesu.preloadPages();
           Aniesu.current.pg = Aniesu.chapter[Aniesu.current.ch];
-          Aniesu.viewer.twitter.href = Aniesu.viewer.twitter.href.replace(/chapter%3D\d+/, 'chapter%3D' + Aniesu.current.ch);
-          Aniesu.viewer.title.innerHTML = 
-            '<div id="aniesu_viewer_manga_title">Agnes\' Style</div>'+
-            '<div id="aniesu_viewer_chapter_title">Chapter ' + Aniesu.current.ch + '</div>';
+          Aniesu.updateShareLink();
+          Aniesu.viewer.ch_title.innerHTML = 'Chapter ' + Aniesu.current.ch;
           
         } else { // otherwise let the reader know they've reached the beginning
           Aniesu.current.ch++;
@@ -146,6 +152,11 @@
           
           alert('This goes to the previous page! Click on the right side of the screen to show the next page. Click the middle of the page to show the top bar.');
         }
+      }
+      
+      // preload prev chapter
+      if (Aniesu.current.pg == 1) {
+        Aniesu.preloadPages(Aniesu.current.ch - 1);
       }
       
       // update page
@@ -156,14 +167,21 @@
     
     
     // preloads pages for the current chapter
-    preloadPages : function () {
-      var i = Aniesu.chapter[Aniesu.current.ch] + 1, img;
-      
-      while (i --> 1) {
-        img = new Image();
-        img.src = 'chapters/read/chapter-' + Aniesu.current.ch + '/' + i + '.jpg';
+    preloadPages : function (chapter) {
+      if (Aniesu.chapter[chapter] && !Aniesu.loaded[chapter]) {
+        var i = Aniesu.chapter[chapter] + 1, img;
+
+        while (i --> 1) {
+          img = new Image();
+          img.src = 'chapters/read/chapter-' + chapter + '/' + i + '.jpg';
+        }
+        
+        Aniesu.loaded[chapter] = true;
       }
     },
+    
+    // logs preloaded chapters so they're not preloaded again
+    loaded : {},
     
     
     // hides the header after a few seconds, so it's not in the way
@@ -176,6 +194,11 @@
         Aniesu.viewer.page.blur();
         delete Aniesu.timeout;
       }, 3000);
+    },
+    
+    // updates the chapter texts in the twitter share link
+    updateShareLink : function () {
+      Aniesu.viewer.twitter.href = "https://twitter.com/intent/tweet?hashtags=%E3%82%A2%E3%83%8B%E3%82%A8%E3%82%B9%E3%81%AE%E6%B5%81%E5%84%80&text=Kuro%20no%20Kiseki%3A%20Agnes'%20Style%20-%20Chapter%20" + Aniesu.current.ch + "&url=https%3A%2F%2Fsethclydesdale.github.io%2Fprojects%2Fagnes-style%2F%3Fchapter%3D" + Aniesu.current.ch;
     }
   };
   
