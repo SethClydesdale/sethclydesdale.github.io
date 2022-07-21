@@ -192,7 +192,7 @@
   
   // keyboard shortcuts
   document.addEventListener('keydown', function (e) {
-    if (Aniesu.active) { console.log(e.key);
+    if (Aniesu.active) {
       // check what key was pressed
       switch (e.key.toLowerCase()) {
         // previous page
