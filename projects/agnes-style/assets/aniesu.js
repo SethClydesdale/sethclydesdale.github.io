@@ -183,7 +183,6 @@
     preload : function (url) {
       var img = new Image();
       img.src = url;
-      console.log(img);
     },
     
     // logs preloaded chapters so they're not preloaded again
