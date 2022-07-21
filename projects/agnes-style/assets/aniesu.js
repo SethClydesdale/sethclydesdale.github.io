@@ -169,15 +169,21 @@
     // preloads pages for the current chapter
     preloadPages : function (chapter) {
       if (Aniesu.chapter[chapter] && !Aniesu.loaded[chapter]) {
-        var i = Aniesu.chapter[chapter] + 1, img;
+        var i = Aniesu.chapter[chapter] + 1;
 
         while (i --> 1) {
-          img = new Image();
-          img.src = 'chapters/read/chapter-' + chapter + '/' + i + '.jpg';
+          Aniesu.preload('chapters/read/chapter-' + chapter + '/' + i + '.jpg');
         }
         
         Aniesu.loaded[chapter] = true;
       }
+    },
+    
+    // preloads the image
+    preload : function (url) {
+      var img = new Image();
+      img.src = url;
+      console.log(img);
     },
     
     // logs preloaded chapters so they're not preloaded again
@@ -205,7 +211,7 @@
   
   // auto open URL based on query (?chapter=1)
   if (/chapter=\d+/i.test(window.location.search)) {
-    var chapter = window.location.search.replace(/.*?chapter=(\d+).*/, '$1');
+    var chapter = Number(window.location.search.replace(/.*?chapter=(\d+).*/, '$1'));
     
     if (Aniesu.chapter[chapter]) {
       Aniesu.open(chapter, 1);
