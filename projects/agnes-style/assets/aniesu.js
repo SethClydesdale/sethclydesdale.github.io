@@ -168,14 +168,12 @@
     
     // preloads pages for the current chapter
     preloadPages : function (chapter) {
-      if (Aniesu.chapter[chapter] && !Aniesu.loaded[chapter]) {
+      if (Aniesu.chapter[chapter]) {
         var i = Aniesu.chapter[chapter] + 1;
 
         while (i --> 1) {
           Aniesu.preload('chapters/read/chapter-' + chapter + '/' + i + '.jpg');
         }
-        
-        Aniesu.loaded[chapter] = true;
       }
     },
     
@@ -184,9 +182,6 @@
       var img = new Image();
       img.src = url;
     },
-    
-    // logs preloaded chapters so they're not preloaded again
-    loaded : {},
     
     
     // hides the header after a few seconds, so it's not in the way
