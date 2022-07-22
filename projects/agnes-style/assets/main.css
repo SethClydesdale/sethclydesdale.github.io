@@ -180,6 +180,11 @@
   right:0;
 }
 
+#aniesu_viewer_title {
+  cursor:default;
+  user-select:none;
+}
+
 #aniesu_viewer_manga_title {
   color:#CCC;
   font-size:13px;
