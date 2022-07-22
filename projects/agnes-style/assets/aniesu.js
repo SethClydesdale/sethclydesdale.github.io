@@ -57,7 +57,7 @@
 
     
     // opens and views the selected chapter
-    open : function (ch, pg) {
+    open : function (ch, pg, popstate) {
       Aniesu.active = true;
       
       // set current chapter/page
@@ -72,6 +72,11 @@
       // also preload pages in the previous chapter
       if (ch > 1) {
         Aniesu.preloadPages(ch - 1);
+      }
+      
+      // update page url
+      if (!popstate) {
+        Aniesu.updateURL(ch);
       }
       
       // create viewer if it doesn't exist, otherwise show it
@@ -98,10 +103,14 @@
 
     
     // closes the manga viewer
-    close : function () {
+    close : function (popstate) {
       Aniesu.active = false;
       Aniesu.viewer.body.style.display = 'none';
       document.body.style.overflow = '';
+      
+      if (!popstate) {
+        Aniesu.updateURL();
+      }
     },
 
     
@@ -114,6 +123,7 @@
           Aniesu.current.pg = 1;
           Aniesu.updateShareLink();
           Aniesu.viewer.ch_title.innerHTML = 'Chapter ' + Aniesu.current.ch;
+          Aniesu.updateURL(Aniesu.current.ch);
           
         } else { // otherwise let the reader know they've reached the end, then close the viewer
           Aniesu.current.ch--;
@@ -145,6 +155,7 @@
           Aniesu.current.pg = Aniesu.chapter[Aniesu.current.ch];
           Aniesu.updateShareLink();
           Aniesu.viewer.ch_title.innerHTML = 'Chapter ' + Aniesu.current.ch;
+          Aniesu.updateURL(Aniesu.current.ch);
           
         } else { // otherwise let the reader know they've reached the beginning
           Aniesu.current.ch++;
@@ -196,19 +207,30 @@
       }, 3000);
     },
     
+    
     // updates the chapter texts in the twitter share link
     updateShareLink : function () {
       Aniesu.viewer.twitter.href = "https://twitter.com/intent/tweet?hashtags=%E3%82%A2%E3%83%8B%E3%82%A8%E3%82%B9%E3%81%AE%E6%B5%81%E5%84%80&text=Kuro%20no%20Kiseki%3A%20Agnes'%20Style%20-%20Chapter%20" + Aniesu.current.ch + "&url=https%3A%2F%2Fsethclydesdale.github.io%2Fprojects%2Fagnes-style%2F%3Fchapter%3D" + Aniesu.current.ch;
+    },
+    
+    
+    // updates URL when viewing chapters, this way it's easier to copy chapter links
+    updateURL : function (chapter) {
+      // check compatibility before pushing a new history state
+      if (window.history && window.history.pushState) {
+        // push new history state
+        window.history.pushState({}, document.title, window.location.href.replace(window.location.search, '') + (chapter ? '?chapter=' + chapter : ''));
+      }
     }
   };
   
   
   // auto open URL based on query (?chapter=1)
   if (/chapter=\d+/i.test(window.location.search)) {
-    var chapter = Number(window.location.search.replace(/.*?chapter=(\d+).*/, '$1'));
+    var chapter = Number(window.location.search.replace(/.*?chapter=(\d+).*/i, '$1'));
     
     if (Aniesu.chapter[chapter]) {
-      Aniesu.open(chapter, 1);
+      Aniesu.open(chapter, 1, true);
     }
   }
   
@@ -241,4 +263,18 @@
       }
     }
   });
+  
+  
+  // loads/closes chapters when the window state changes (back/forward)
+  window.onpopstate = function() {
+    if (/chapter=\d+/i.test(window.location.search)) {
+      var chapter = Number(window.location.search.replace(/.*?chapter=(\d+).*/i, '$1'));
+
+      if (Aniesu.chapter[chapter]) {
+        Aniesu.open(chapter, 1, true);
+      }
+    } else if (Aniesu.active) {
+      Aniesu.close(true);
+    }
+  };
 }(window, document));
