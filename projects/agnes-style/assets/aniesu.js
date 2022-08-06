@@ -220,7 +220,7 @@
       // check compatibility before pushing a new history state
       if (window.history && window.history.pushState) {
         // push new history state
-        window.history.pushState({}, document.title, window.location.href.replace(window.location.search, '') + (chapter ? '?chapter=' + chapter : ''));
+        window.history.pushState({}, document.title, window.location.href.replace(window.location.hash, '').replace(window.location.search, '') + (chapter ? '?chapter=' + chapter : ''));
       }
     }
   };
