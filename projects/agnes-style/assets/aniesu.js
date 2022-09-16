@@ -20,7 +20,8 @@
       4 : 4,
       5 : 4,
       6 : 4,
-      7 : 4
+      7 : 4,
+      8 : 4
     },
     
     
@@ -132,7 +133,7 @@
           Aniesu.current.ch--;
           Aniesu.current.pg--;
           
-          alert("You've reached the end for now! Check back later for when new chapters are added. You can close the manga viewer by clicking the middle of the screen and then the X on the top left.");
+          alert("You've reached the end... I hope you enjoyed this cute little manga as much as I did! You can close the manga viewer by clicking the middle of the screen and then the X on the top left.");
         }
       }
       
