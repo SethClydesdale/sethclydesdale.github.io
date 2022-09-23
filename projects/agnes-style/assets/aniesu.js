@@ -21,7 +21,20 @@
       5 : 4,
       6 : 4,
       7 : 4,
-      8 : 4
+      8 : 4,
+      9 : 9
+    },
+    
+    // illustration sources for chapter 9 (Hinata-sensei's bonus illustrations)
+    art : {
+      2 : 'https://twitter.com/hinata_nonoka/status/1543212985141063680',
+      3 : 'https://twitter.com/hinata_nonoka/status/1552645003025207296',
+      4 : 'https://twitter.com/hinata_nonoka/status/1555844013949079552',
+      5 : 'https://twitter.com/hinata_nonoka/status/1560957635050225664',
+      6 : 'https://twitter.com/hinata_nonoka/status/1565544777470210048',
+      7 : 'https://twitter.com/hinata_nonoka/status/1569687242540740614',
+      8 : 'https://twitter.com/hinata_nonoka/status/1570381918230937600',
+      9 : 'https://twitter.com/hinata_nonoka/status/1570743312453357569'
     },
     
     
@@ -36,6 +49,7 @@
       viewer.innerHTML = 
         '<div id="aniesu_viewer_prev" onclick="Aniesu.prev();"></div>'+
         '<div id="aniesu_viewer_next" onclick="Aniesu.next();"></div>'+
+        '<div id="aniesu_viewer_src"></div>'+
         '<div id="aniesu_viewer_page" tabindex="0" onclick="Aniesu.hideHeader();"></div>'+
         '<div id="aniesu_viewer_head">'+
           '<div id="aniesu_viewer_close" onclick="Aniesu.close();" title="Close manga viewer"></div>'+
@@ -55,6 +69,7 @@
         page : document.getElementById('aniesu_viewer_page'),
         prev : document.getElementById('aniesu_viewer_prev'),
         next : document.getElementById('aniesu_viewer_next'),
+        src : document.getElementById('aniesu_viewer_src'),
         twitter : document.getElementById('aniesu_viewer_twitter')
       };
     },
@@ -97,8 +112,11 @@
       Aniesu.updateShareLink();
       
       // set current chapter title and page
-      Aniesu.viewer.ch_title.innerHTML = 'Chapter ' + Aniesu.current.ch;
+      Aniesu.viewer.ch_title.innerHTML = Aniesu.current.ch == 9 ? 'Bonus Illustrations' : 'Chapter ' + Aniesu.current.ch;
       Aniesu.viewer.page.style.backgroundImage = 'url(chapters/read/chapter-' + ch + '/' + pg + '.jpg)';
+      
+      // hide src link for bonus illustrations
+      Aniesu.viewer.src.innerHTML = '';
       
       // focus page to show the header for a few seconds
       Aniesu.viewer.page.focus();
@@ -126,14 +144,14 @@
         if (Aniesu.chapter[++Aniesu.current.ch]) {
           Aniesu.current.pg = 1;
           Aniesu.updateShareLink();
-          Aniesu.viewer.ch_title.innerHTML = 'Chapter ' + Aniesu.current.ch;
+          Aniesu.viewer.ch_title.innerHTML = Aniesu.current.ch == 9 ? 'Bonus Illustrations' : 'Chapter ' + Aniesu.current.ch;
           Aniesu.updateURL(Aniesu.current.ch);
           
         } else { // otherwise let the reader know they've reached the end, then close the viewer
           Aniesu.current.ch--;
           Aniesu.current.pg--;
           
-          alert("You've reached the end... I hope you enjoyed this cute little manga as much as I did! You can close the manga viewer by clicking the middle of the screen and then the X on the top left.");
+          alert("You've reached the end! I hope you enjoyed this cute little manga as much as I did! You can close the manga viewer by clicking the middle of the screen and then the X on the top left.");
         }
       }
       
@@ -145,6 +163,13 @@
       // update page
       if (Aniesu.chapter[Aniesu.current.ch]) {
         Aniesu.viewer.page.style.backgroundImage = 'url(chapters/read/chapter-' + Aniesu.current.ch + '/' + Aniesu.current.pg + '.jpg)';
+      }
+      
+      // show/hide bonus illustration src
+      if (Aniesu.current.ch == 9 && Aniesu.current.pg > 1) {
+        Aniesu.viewer.src.innerHTML = '<a href="' + Aniesu.art[Aniesu.current.pg] + '" target="_blank"><i class="fa">&#xf099;</i> View on Twitter</a>';
+      } else {
+        Aniesu.viewer.src.innerHTML = '';
       }
     },
 
@@ -177,6 +202,15 @@
       // update page
       if (Aniesu.chapter[Aniesu.current.ch]) {
         Aniesu.viewer.page.style.backgroundImage = 'url(chapters/read/chapter-' + Aniesu.current.ch + '/' + Aniesu.current.pg + '.jpg)';
+      }
+      
+
+      
+      // show/hide bonus illustration src
+      if (Aniesu.current.ch == 9 && Aniesu.current.pg > 1) {
+        Aniesu.viewer.src.innerHTML = '<a href="' + Aniesu.art[Aniesu.current.pg] + '" target="_blank"><i class="fa">&#xf099;</i> View on Twitter</a>';
+      } else {
+        Aniesu.viewer.src.innerHTML = '';
       }
     },
     
@@ -214,7 +248,7 @@
     
     // updates the chapter texts in the twitter share link
     updateShareLink : function () {
-      Aniesu.viewer.twitter.href = "https://twitter.com/intent/tweet?hashtags=%E3%82%A2%E3%83%8B%E3%82%A8%E3%82%B9%E3%81%AE%E6%B5%81%E5%84%80&text=Kuro%20no%20Kiseki%3A%20Agnes'%20Style%20-%20Chapter%20" + Aniesu.current.ch + "&url=https%3A%2F%2Fsethclydesdale.github.io%2Fprojects%2Fagnes-style%2F%3Fchapter%3D" + Aniesu.current.ch;
+      Aniesu.viewer.twitter.href = "https://twitter.com/intent/tweet?hashtags=%E3%82%A2%E3%83%8B%E3%82%A8%E3%82%B9%E3%81%AE%E6%B5%81%E5%84%80&text=Kuro%20no%20Kiseki%3A%20Agnes'%20Style%20-%20" + (Aniesu.current.ch == 9 ? "Bonus%20Illustrations" : "Chapter%20" + Aniesu.current.ch) + "&url=https%3A%2F%2Fsethclydesdale.github.io%2Fprojects%2Fagnes-style%2F%3Fchapter%3D" + Aniesu.current.ch;
     },
     
     
