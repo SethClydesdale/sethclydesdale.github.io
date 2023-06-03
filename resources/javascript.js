@@ -9,8 +9,10 @@
       if (!/http/.test(a[i].href)) {
         if (/\/$/.test(a[i].href)) {
           a[i].href += 'index.html';
-        } else if (/\/#(.*?)$/.test(a[i].href)) {
+        } else if (/\/#.*?$/.test(a[i].href)) {
           a[i].href = a[i].href.replace(/(#.*?)$/, 'index.html$1');
+        } else if (/\/\?.*?$/.test(a[i].href)) {
+          a[i].href = a[i].href.replace(/(\?.*?)$/, 'index.html$1');
         }
       }
     }
