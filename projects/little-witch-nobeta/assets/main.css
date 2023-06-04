@@ -9,6 +9,7 @@ footer { position:relative; }
 #footer-img {
   position:absolute;
   top:-100px;
+  left:10px;
 }
 
 #main-desc { font-size:16px; }
