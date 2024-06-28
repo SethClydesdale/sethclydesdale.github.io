@@ -1,63 +1,3 @@
-@font-face {
-  font-family:'FontAwesomeBrands';
-  src:url('fonts/fa-brands.woff2?v=4.7.0') format('woff2'), 
-      url('fonts/fa-brands.ttf?v=4.7.0') format('truetype'), 
-  font-weight:normal;
-  font-style:normal;
-}
-
-/* easter egg for clicking the footer img */
-@keyframes aniheart {
-  from {
-    top:80px;
-    right:90px;
-    font-size:0px;
-    opacity:0;
-  }
-  
-  to {
-    top:0px;
-    right:30px;
-    font-size:40px;
-    color:#F00;
-    opacity:1;
-  }
-}
-
-
-@keyframes aniheartout {
-  from {
-    opacity:1;
-  }
-  
-  to {
-    opacity:0;
-  }
-}
-
-#vanani {
-  position:relative;
-  display:inline-block;
-}
-
-#vanani {
-  cursor:pointer;
-}
-
-#ani_heart {
-  color:#F00;
-  font-size:40px;
-  position:absolute;
-  top:0;
-  right:30px;
-  transform:rotate(30deg);
-  opacity:0;
-}
-
-#vanani.ani #ani_heart { animation:aniheart 500ms infinite }
-#vanani.aniout #ani_heart { animation:aniheartout 500ms }
-
-
 /* general */
 .nobull { list-style-type:none; }
 .content-block { font-size:15px; }
@@ -187,10 +127,10 @@
 .read:active, .twitter:focus { background-color:#03A; }
 .read:before { content:"\f02d"; }
 
-.twitter { background-color:#444; border-bottom:2px solid #222; }
-.twitter:hover { background-color:#333; }
-.twitter:active, .twitter:focus { background-color:#222; }
-.twitter:before { content:"𝕏"; }
+.twitter { background-color:#39C; border-bottom:2px solid #17A; }
+.twitter:hover { background-color:#28B; }
+.twitter:active, .twitter:focus { background-color:#17A; }
+.twitter:before { content:"\f099"; }
 
 .reddit { background-color:#F66; border-bottom:2px solid #D44; }
 .reddit:hover { background-color:#E55; }
@@ -274,7 +214,7 @@
 }
 
 #aniesu_viewer_close:after { content:"\f00d"; }
-#aniesu_viewer_twitter:after { content:"𝕏"; }
+#aniesu_viewer_twitter:after { content:"\f099"; }
 
 #aniesu_viewer_page {
   background-repeat:no-repeat;

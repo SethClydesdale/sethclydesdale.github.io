@@ -15,28 +15,26 @@
     // chapter list; chapter : page_total
     chapter : {
       1 : 5,
-      /*2 : 4,
+      2 : 4,
       3 : 4,
       4 : 4,
       5 : 4,
       6 : 4,
       7 : 4,
-      8 : 5,
-      9 : 11*/
+      8 : 4,
+      9 : 9
     },
     
     // illustration sources for chapter 9 (Hinata-sensei's bonus illustrations)
     art : {
-       2 : 'https://x.com/hinata_nonoka/status/1757735461500649817',
-       3 : 'https://x.com/hinata_nonoka/status/1555844013949079552',
-       4 : 'https://x.com/hinata_nonoka/status/1644259680636784640',
-       5 : 'https://x.com/hinata_nonoka/status/1560957635050225664',
-       6 : 'https://x.com/hinata_nonoka/status/1758056502466940945',
-       7 : 'https://x.com/hinata_nonoka/status/1575322605347041280',
-       8 : 'https://x.com/hinata_nonoka/status/1583297069661712385',
-       9 : 'https://x.com/hinata_nonoka/status/1625103653693689856',
-      10 : 'https://x.com/hinata_nonoka/status/1783076995104186610',
-      11 : 'https://x.com/hinata_nonoka/status/1570743312453357569'
+      2 : 'https://twitter.com/hinata_nonoka/status/1543212985141063680',
+      3 : 'https://twitter.com/hinata_nonoka/status/1552645003025207296',
+      4 : 'https://twitter.com/hinata_nonoka/status/1555844013949079552',
+      5 : 'https://twitter.com/hinata_nonoka/status/1560957635050225664',
+      6 : 'https://twitter.com/hinata_nonoka/status/1565544777470210048',
+      7 : 'https://twitter.com/hinata_nonoka/status/1569687242540740614',
+      8 : 'https://twitter.com/hinata_nonoka/status/1570381918230937600',
+      9 : 'https://twitter.com/hinata_nonoka/status/1570743312453357569'
     },
     
     
@@ -56,10 +54,10 @@
         '<div id="aniesu_viewer_head">'+
           '<div id="aniesu_viewer_close" onclick="Aniesu.close();" title="Close manga viewer"></div>'+
           '<div id="aniesu_viewer_title">'+
-            '<div id="aniesu_viewer_manga_title">Trails through Daybreak: Agnès\' Style</div>'+
+            '<div id="aniesu_viewer_manga_title">Kuro no Kiseki: Agnes\' Style</div>'+
             '<div id="aniesu_viewer_chapter_title">Chapter 1</div>'+
           '</div>'+
-          "<a id=\"aniesu_viewer_twitter\" href=\"https://x.com/intent/tweet?hashtags=TrailsthroughDaybreak&text=Trails%20through%20Daybreak%3A%20Agnès'%20Style%20-%20Chapter%201&url=https%3A%2F%2Fsethclydesdale.github.io%2Fprojects%2Fagnes-style%2F%3Fchapter%3D1\" target=\"_blank\" title=\"Share current chapter to X\"></a>"+
+          "<a id=\"aniesu_viewer_twitter\" href=\"https://twitter.com/intent/tweet?hashtags=%E3%82%A2%E3%83%8B%E3%82%A8%E3%82%B9%E3%81%AE%E6%B5%81%E5%84%80&text=Kuro%20no%20Kiseki%3A%20Agnes'%20Style%20-%20Chapter%201&url=https%3A%2F%2Fsethclydesdale.github.io%2Fprojects%2Fagnes-style%2F%3Fchapter%3D1\" target=\"_blank\" title=\"Share current chapter to Twitter\"></a>"+
         '</div>';
       
       document.body.appendChild(viewer);
@@ -153,8 +151,7 @@
           Aniesu.current.ch--;
           Aniesu.current.pg--;
           
-          // I hope you enjoyed this cute little manga as much as I did!
-          alert("You've reached the end, for now! You can close the manga viewer by clicking the middle of the screen and then the X on the top left.");
+          alert("You've reached the end! I hope you enjoyed this cute little manga as much as I did! You can close the manga viewer by clicking the middle of the screen and then the X on the top left.");
         }
       }
       
@@ -170,7 +167,7 @@
       
       // show/hide bonus illustration src
       if (Aniesu.current.ch == 9 && Aniesu.current.pg > 1) {
-        Aniesu.viewer.src.innerHTML = '<a href="' + Aniesu.art[Aniesu.current.pg] + '" target="_blank"><i class="fa">&#xf099;</i> View on X (Twitter)</a>';
+        Aniesu.viewer.src.innerHTML = '<a href="' + Aniesu.art[Aniesu.current.pg] + '" target="_blank"><i class="fa">&#xf099;</i> View on Twitter</a>';
       } else {
         Aniesu.viewer.src.innerHTML = '';
       }
@@ -211,7 +208,7 @@
       
       // show/hide bonus illustration src
       if (Aniesu.current.ch == 9 && Aniesu.current.pg > 1) {
-        Aniesu.viewer.src.innerHTML = '<a href="' + Aniesu.art[Aniesu.current.pg] + '" target="_blank"><i class="fa">&#xf099;</i> View on X</a>';
+        Aniesu.viewer.src.innerHTML = '<a href="' + Aniesu.art[Aniesu.current.pg] + '" target="_blank"><i class="fa">&#xf099;</i> View on Twitter</a>';
       } else {
         Aniesu.viewer.src.innerHTML = '';
       }
@@ -251,7 +248,7 @@
     
     // updates the chapter texts in the twitter share link
     updateShareLink : function () {
-      Aniesu.viewer.twitter.href = "https://x.com/intent/tweet?hashtags=TrailsthroughDaybreak&text=Trails%20through%20Daybreak%3A%20Agnès'%20Style%20-%20" + (Aniesu.current.ch == 9 ? "Bonus%20Illustrations" : "Chapter%20" + Aniesu.current.ch) + "&url=https%3A%2F%2Fsethclydesdale.github.io%2Fprojects%2Fagnes-style%2F%3Fchapter%3D" + Aniesu.current.ch;
+      Aniesu.viewer.twitter.href = "https://twitter.com/intent/tweet?hashtags=%E3%82%A2%E3%83%8B%E3%82%A8%E3%82%B9%E3%81%AE%E6%B5%81%E5%84%80&text=Kuro%20no%20Kiseki%3A%20Agnes'%20Style%20-%20" + (Aniesu.current.ch == 9 ? "Bonus%20Illustrations" : "Chapter%20" + Aniesu.current.ch) + "&url=https%3A%2F%2Fsethclydesdale.github.io%2Fprojects%2Fagnes-style%2F%3Fchapter%3D" + Aniesu.current.ch;
     },
     
     
