@@ -120,12 +120,12 @@
 /* chapter list */
 #chapter-desc {
   text-align:center;
-  max-width:600px;
+  max-width:650px;
   margin:0 auto 20px auto;
 }
 
 #chapter-list {
-  max-width:600px;
+  max-width:650px;
   margin:0 auto;
 }
 
@@ -139,7 +139,7 @@
 
 .chapter-preview, .chapter-info { float:left; }
 .chapter-preview { width:110px; }
-.chapter-info { width:470px; }
+.chapter-info { width:520px; }
 
 .chapter-preview img {
   border:1px solid #CCC;
@@ -360,5 +360,9 @@
     position:absolute;
     top:6px;
     left:6px;
+  }
+  
+  .chapter-info .section-title {
+    padding-left:32px;
   }
 }
