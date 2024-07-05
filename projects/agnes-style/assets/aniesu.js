@@ -21,8 +21,8 @@
       5 : 4,
       6 : 4,
       7 : 4,
-      /*8 : 5,
-      9 : 11*/
+      8 : 5,
+      9 : 11
     },
     
     // illustration sources for chapter 9 (Hinata-sensei's bonus illustrations)
@@ -56,10 +56,10 @@
         '<div id="aniesu_viewer_head">'+
           '<div id="aniesu_viewer_close" onclick="Aniesu.close();" title="Close manga viewer"></div>'+
           '<div id="aniesu_viewer_title">'+
-            '<div id="aniesu_viewer_manga_title">Trails through Daybreak: Agnès\' Style</div>'+
+            '<div id="aniesu_viewer_manga_title">Trails through Daybreak: ~Agnès\' Style~</div>'+
             '<div id="aniesu_viewer_chapter_title">Chapter 1</div>'+
           '</div>'+
-          "<a id=\"aniesu_viewer_twitter\" href=\"https://x.com/intent/tweet?hashtags=TrailsthroughDaybreak&text=Trails%20through%20Daybreak%3A%20Agnès'%20Style%20-%20Chapter%201&url=https%3A%2F%2Fsethclydesdale.github.io%2Fprojects%2Fagnes-style%2F%3Fchapter%3D1\" target=\"_blank\" title=\"Share current chapter to X\"></a>"+
+          "<a id=\"aniesu_viewer_twitter\" href=\"https://x.com/intent/tweet?hashtags=TrailsthroughDaybreak&text=Trails%20through%20Daybreak%3A%20~Agnès'%20Style~%20-%20Chapter%201&url=https%3A%2F%2Fsethclydesdale.github.io%2Fprojects%2Fagnes-style%2F%3Fchapter%3D1\" target=\"_blank\" title=\"Share current chapter to X (Twitter)\"></a>"+
         '</div>';
       
       document.body.appendChild(viewer);
@@ -153,8 +153,7 @@
           Aniesu.current.ch--;
           Aniesu.current.pg--;
           
-          // I hope you enjoyed this cute little manga as much as I did!
-          alert("You've reached the end, for now! You can close the manga viewer by clicking the middle of the screen and then the X on the top left.");
+          alert("You've reached the end! I hope you enjoyed this cute little manga as much as I did! You can close the manga viewer by clicking the middle of the screen and then the X on the top left.");
         }
       }
       
@@ -170,7 +169,7 @@
       
       // show/hide bonus illustration src
       if (Aniesu.current.ch == 9 && Aniesu.current.pg > 1) {
-        Aniesu.viewer.src.innerHTML = '<a href="' + Aniesu.art[Aniesu.current.pg] + '" target="_blank"><i class="fa">&#xf099;</i> View on X (Twitter)</a>';
+        Aniesu.viewer.src.innerHTML = '<a href="' + Aniesu.art[Aniesu.current.pg] + '" target="_blank"><i class="fa">𝕏</i> View on X (Twitter)</a>';
       } else {
         Aniesu.viewer.src.innerHTML = '';
       }
@@ -211,7 +210,7 @@
       
       // show/hide bonus illustration src
       if (Aniesu.current.ch == 9 && Aniesu.current.pg > 1) {
-        Aniesu.viewer.src.innerHTML = '<a href="' + Aniesu.art[Aniesu.current.pg] + '" target="_blank"><i class="fa">&#xf099;</i> View on X</a>';
+        Aniesu.viewer.src.innerHTML = '<a href="' + Aniesu.art[Aniesu.current.pg] + '" target="_blank"><i class="fa">𝕏</i> View on X (Twitter)</a>';
       } else {
         Aniesu.viewer.src.innerHTML = '';
       }
@@ -251,7 +250,7 @@
     
     // updates the chapter texts in the twitter share link
     updateShareLink : function () {
-      Aniesu.viewer.twitter.href = "https://x.com/intent/tweet?hashtags=TrailsthroughDaybreak&text=Trails%20through%20Daybreak%3A%20Agnès'%20Style%20-%20" + (Aniesu.current.ch == 9 ? "Bonus%20Illustrations" : "Chapter%20" + Aniesu.current.ch) + "&url=https%3A%2F%2Fsethclydesdale.github.io%2Fprojects%2Fagnes-style%2F%3Fchapter%3D" + Aniesu.current.ch;
+      Aniesu.viewer.twitter.href = "https://x.com/intent/tweet?hashtags=TrailsthroughDaybreak&text=Trails%20through%20Daybreak%3A%20~Agnès'%20Style~%20-%20" + (Aniesu.current.ch == 9 ? "Bonus%20Illustrations" : "Chapter%20" + Aniesu.current.ch) + "&url=https%3A%2F%2Fsethclydesdale.github.io%2Fprojects%2Fagnes-style%2F%3Fchapter%3D" + Aniesu.current.ch;
     },
     
     
