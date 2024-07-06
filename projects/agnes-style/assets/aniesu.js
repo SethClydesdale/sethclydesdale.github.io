@@ -261,6 +261,37 @@
         // push new history state
         window.history.pushState({}, document.title, window.location.href.replace(window.location.hash, '').replace(window.location.search, '') + (chapter ? '?chapter=' + chapter : ''));
       }
+    },
+    
+    
+    // lightbox
+    lightbox : {
+      
+      // open the lightbox
+      open : function (caller, src) {
+        if (!Aniesu.lightbox.overlay) {
+          Aniesu.lightbox.overlay = document.createElement('DIV');
+          Aniesu.lightbox.overlay.id = 'aniesu_lb_overlay';
+          Aniesu.lightbox.overlay.innerHTML =
+            '<div id="aniesu_lb_bg" onclick="Aniesu.lightbox.close();" title="Close image viewer"></div>'+
+            '<img id="aniesu_lb_img" src="' + (src ? src : caller.href ? caller.href : '') + '"/>'+
+            '<div id="aniesu_lb_close" class="fa" onclick="Aniesu.lightbox.close();" title="Close image viewer">&#xf00d;</div>';
+          
+          document.body.appendChild(Aniesu.lightbox.overlay);
+          document.body.style.overflow = 'hidden';
+        } else {
+          return false;
+        }
+      },
+      
+      // close the lightbox
+      close : function () {
+        if (Aniesu.lightbox.overlay) {
+          Aniesu.lightbox.overlay.parentNode.removeChild(Aniesu.lightbox.overlay);
+          delete Aniesu.lightbox.overlay;
+          document.body.style.overflow = '';
+        }
+      }
     }
   };
   
