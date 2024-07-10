@@ -169,7 +169,7 @@
       
       // show/hide bonus illustration src
       if (Aniesu.current.ch == 9 && Aniesu.current.pg > 1) {
-        Aniesu.viewer.src.innerHTML = '<a href="' + Aniesu.art[Aniesu.current.pg] + '" target="_blank"><i class="fa">𝕏</i> View on X (Twitter)</a>';
+        Aniesu.viewer.src.innerHTML = '<a href="' + Aniesu.art[Aniesu.current.pg] + '" target="_blank"><i class="fa">&#x1D54F;</i> View on X (Twitter)</a>';
       } else {
         Aniesu.viewer.src.innerHTML = '';
       }
@@ -210,7 +210,7 @@
       
       // show/hide bonus illustration src
       if (Aniesu.current.ch == 9 && Aniesu.current.pg > 1) {
-        Aniesu.viewer.src.innerHTML = '<a href="' + Aniesu.art[Aniesu.current.pg] + '" target="_blank"><i class="fa">𝕏</i> View on X (Twitter)</a>';
+        Aniesu.viewer.src.innerHTML = '<a href="' + Aniesu.art[Aniesu.current.pg] + '" target="_blank"><i class="fa">&#x1D54F;</i> View on X (Twitter)</a>';
       } else {
         Aniesu.viewer.src.innerHTML = '';
       }

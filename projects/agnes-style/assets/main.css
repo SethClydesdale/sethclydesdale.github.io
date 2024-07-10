@@ -237,7 +237,7 @@
 .twitter { background-color:#444; border-bottom:2px solid #222; }
 .twitter:hover { background-color:#333; }
 .twitter:active, .twitter:focus { background-color:#222; }
-.twitter:before { content:"𝕏"; }
+.twitter:before { content:"\1D54F"; }
 
 .reddit { background-color:#F66; border-bottom:2px solid #D44; }
 .reddit:hover { background-color:#E55; }
@@ -321,7 +321,7 @@
 }
 
 #aniesu_viewer_close:after { content:"\f00d"; }
-#aniesu_viewer_twitter:after { content:"𝕏"; }
+#aniesu_viewer_twitter:after { content:"\1D54F"; }
 
 #aniesu_viewer_page {
   background-repeat:no-repeat;
