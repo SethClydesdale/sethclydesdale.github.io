@@ -23,7 +23,7 @@
 body {
   color:#333;
   background:#FFF;
-  font-size:13px;
+  font-size:15px;
   font-family:Arial, sans-serif;
   padding:0;
   margin:0;
@@ -58,7 +58,7 @@ a:hover { text-decoration:underline; }
 .button, a.button {
   color:#FFF;
   background:#39C;
-  font-size:13px;
+  font-size:15px;
   font-family:Meiryo, Osaka, Arial, sans-serif;
   text-decoration:none;
   border:none;
@@ -126,7 +126,7 @@ a#fork-me:hover {
 #content { flex:1 0 auto; }
 
 .content-block {
-  max-width:1000px;
+  max-width:1200px;
   margin:0 auto;
   padding:30px;
 }
@@ -252,8 +252,8 @@ footer li:first-child:before { display:none; }
 
 
 /* RESPONSIVENESS */
-@media (max-width:1000px) {
-  /* wrapper's max-width is 1000px, so remove padding so the page takes up the whole screen */
+@media (max-width:1200px) {
+  /* wrapper's max-width is 1200px, so remove padding so the page takes up the whole screen */
   .content-block { padding:30px 0; }
   
   /* add a bit of padding to other elements */

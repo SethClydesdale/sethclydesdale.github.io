@@ -35,6 +35,8 @@
   }
 }
 
+.content-block { max-width:1000px; }
+
 #vanani {
   position:relative;
   display:inline-block;
