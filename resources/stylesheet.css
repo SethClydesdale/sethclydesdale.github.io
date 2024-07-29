@@ -123,6 +123,11 @@ a#fork-me:hover {
 
 
 /* CONTENT */
+#main-paragraph {
+  max-width:1000px;
+  margin:20px auto;
+}
+
 #content { flex:1 0 auto; }
 
 .content-block {
