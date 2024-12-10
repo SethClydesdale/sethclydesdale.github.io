@@ -255,6 +255,11 @@ footer li:first-child:before { display:none; }
 .footer-left { float:left; }
 .footer-right { float:right; }
 
+/* ADS */
+.ad-container {
+  text-align:center;
+  margin:15px 0;
+}
 
 /* RESPONSIVENESS */
 @media (max-width:1200px) {
