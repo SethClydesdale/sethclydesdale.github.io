@@ -26,9 +26,9 @@ if (window.location.hostname == 'sethclydesdale.github.io') {
     adsense.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + id;
     document.head.appendChild(adsense);
     
-    // wait until DOM loaded to insert ads
-    window.addEventListener('DOMContentLoaded', function() {
-      var content = document.getElementById('content');
+    // function for inserting ads into document
+    var insertAds = function() {
+      var content = document.getElementById('content'), ad;
       
       if (content) {
         
@@ -60,7 +60,14 @@ if (window.location.hostname == 'sethclydesdale.github.io') {
           (adsbygoogle = window.adsbygoogle || []).push({});
         }
       }
-    });
+    };
+    
+    // wait until DOM loaded to insert ads
+    if (document.readyState !== 'loading') {
+      insertAds();
+    } else {
+      document.addEventListener('DOMContentLoaded', insertAds);
+    }
     
   }(window, document, 'ca-pub-2159011770843378'));
 }
