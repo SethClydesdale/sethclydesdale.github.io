@@ -20,7 +20,7 @@ if (window.location.hostname == 'sethclydesdale.github.io') {
   
   // Adsense
   (function (window, document, id) {
-    var adsense = document.createElement('SCRIPT'), ad;
+    var adsense = document.createElement('SCRIPT');
     adsense.async = true;
     adsense.crossorigin = 'anonymous';
     adsense.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + id;
