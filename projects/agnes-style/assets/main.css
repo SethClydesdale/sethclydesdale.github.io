@@ -173,6 +173,11 @@
   margin:0 auto 20px auto;
 }
 
+#controls-desc {
+  max-width:650px;
+  margin:0 auto 20px auto;
+}
+
 #chapter-list {
   max-width:650px;
   margin:0 auto;
