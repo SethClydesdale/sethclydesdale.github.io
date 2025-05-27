@@ -48,6 +48,22 @@ ul li { margin-bottom:4px; }
 }
 
 
+/* input fields */
+input[type="text"], input[type="number"], textarea, select {
+  font-size:15px;
+  font-family:'メイリオ', 'Meiryo', 'Osaka', "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Arial, sans-serif;
+  background:#FFF;
+  border:1px solid #CCC;
+  padding:6px;
+  outline:none;
+}
+select { cursor:pointer; }
+input[type="text"]:disabled, input[type="number"]:disabled, textarea:disabled, select:disabled { color:#333; }
+input[type="text"]::placeholder, input[type="number"]::placeholder, textarea::placeholder { color:#BBB; }
+input[type="text"]:hover, input[type="number"]:hover, textarea:hover, select:hover { border-color:#999; }
+input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:focus { border-color:#39C; }
+
+
 /* LINKS AND BUTTONS */
 a {
   color:#039;
