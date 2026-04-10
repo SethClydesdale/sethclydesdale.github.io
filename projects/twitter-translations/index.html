@@ -246,7 +246,69 @@
       </ul>
     </footer>
   
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <script src="../../resources/javascript.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        var tweets = Array.from(document.querySelectorAll('.twitter-tweet')),
+            loadCount = 5,
+            currentIndex = 0;
+        
+        // temporarily change the class and hide all tweets so the Twitter script ignores them
+        tweets.forEach(function(tweet) {
+          tweet.className = 'lazy-tweet';
+          tweet.style.display = 'none';
+        });
+
+        // load the Twitter widget script dynamically
+        var script = document.createElement('script');
+        script.src = "https://platform.twitter.com/widgets.js";
+        script.charset = "utf-8";
+        script.onload = function() {
+          // render the first batch of tweets once the script is ready
+          renderNextBatch();
+        };
+        document.body.appendChild(script);
+
+        // setup an intersection observer to trigger when we scroll near the bottom
+        var observer = new IntersectionObserver(function(entries) {
+          if (entries[0].isIntersecting) {
+            renderNextBatch();
+          }
+        }, { rootMargin: "600px" }); // start loading 600px before the user reaches the bottom
+
+        // create an invisible sentinel element to track scrolling
+        var sentinel = document.createElement('div');
+        sentinel.id = 'tweet-sentinel';
+        sentinel.style.height = '1px';
+        document.getElementById('tweets_list').appendChild(sentinel);
+        observer.observe(sentinel);
+
+        // function to render the next 5 tweets
+        function renderNextBatch() {
+          if (currentIndex >= tweets.length) {
+            observer.disconnect(); // stop observing if all tweets are loaded
+            return;
+          }
+
+          var endIndex = Math.min(currentIndex + loadCount, tweets.length),
+              batch = tweets.slice(currentIndex, endIndex);
+          
+          batch.forEach(function(tweet) {
+            tweet.className = 'twitter-tweet'; // restore the class
+            tweet.style.display = ''; // make tweet visible
+          });
+
+          // tell Twitter to scan the tweet container for the newly restored classes
+          if (window.twttr && twttr.widgets) {
+            twttr.widgets.load(document.getElementById('tweets_list'));
+          }
+
+          currentIndex = endIndex;
+          
+          // move the sentinel to the very bottom of the list
+          document.getElementById('tweets_list').appendChild(sentinel);
+        }
+      });
+    </script>
   </body>
 </html>
