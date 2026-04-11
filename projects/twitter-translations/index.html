@@ -45,6 +45,34 @@
         padding:15px;
         padding-top:0;
       }
+      
+      #main-title { position:relative; }
+
+      #tn_counter {
+        font-size:12px;
+        color:#FFF;
+        background:#39C;
+        border:2px solid #28B;
+        border-radius:10px;
+        position:absolute;
+        -webkit-transform:rotate(25deg);
+                transform:rotate(25deg);
+        display:inline-block;
+        padding:3px 6px;
+        margin-left:-50px;
+        margin-top:-15px;
+        pointer-events:none;
+        user-select:none;
+      }
+      
+      @media (max-width:400px) {
+        #tn_counter {
+          position:static;
+          -webkit-transform:rotate(0deg);
+                  transform:rotate(0deg);
+          margin:0 auto;
+        }
+      }
     </style>
     <script src="../../resources/ga.js" async></script>
   </head>
@@ -58,7 +86,7 @@
     
     <div id="content">
       <div class="content-block clear">
-        <h2 id="main-title" class="title center">Twitter Translations</h2>
+        <h2 id="main-title" class="title center">Twitter Translations<span id="tn_counter"></span></h2>
         <p id="main-desc">Here you can find all the Japanese to English translations that I've done on Twitter for various things! They range from single images to short manga. I hope you enjoy them! For my other translation projects, please see the list on the <a href="../../#projects-translation">main page</a>.</p>
       </div>
       
@@ -248,6 +276,15 @@
   
     <script src="../../resources/javascript.min.js"></script>
     <script>
+      // translation count
+      var counter = document.getElementById('tn_counter'),
+          blocks = document.querySelectorAll('#tweets_list blockquote');
+      
+      if (counter && blocks.length) {
+        counter.innerText = blocks.length + ' and counting!';
+      }
+      
+      // lazy loader
       document.addEventListener("DOMContentLoaded", function() {
         var tweets = Array.from(document.querySelectorAll('.twitter-tweet')),
             loadCount = 5,
